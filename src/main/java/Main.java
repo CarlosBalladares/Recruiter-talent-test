@@ -99,7 +99,6 @@ public class Main {
         tm.setTemperature(0f, CELSIUS);
 
         tm.setTemperature(1f, CELSIUS);
-        tm.setTemperature(0f, CELSIUS);
 
 
 
