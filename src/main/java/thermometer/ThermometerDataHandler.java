@@ -11,10 +11,10 @@ public class ThermometerDataHandler extends TemperatureListener{
 
     private boolean inited;
 
-    ListenerSettings settings;
+    Settings settings;
 
 
-    public ThermometerDataHandler(ListenerSettings settings, Callback callback) {
+    public ThermometerDataHandler(Settings settings, Callback callback) {
         super(callback);
         this.settings = settings;
         this.prevTemp = null;

@@ -1,7 +1,5 @@
 package main.java;
 
-import com.google.common.eventbus.EventBus;
-import com.google.common.eventbus.Subscribe;
 import main.java.thermometer.*;
 
 /**
@@ -50,7 +48,7 @@ public class Main {
 //        tm.setTemperature(0f, CELSIUS);
 //        tm.setTemperature(100f, CELSIUS);
 //
-//        ListenerSettings freezing = new ListenerSettings();
+//        Settings freezing = new Settings();
 //
 //
 //        TemperatureListener listen = tm.listen(freezing, new Callback() {
@@ -60,23 +58,17 @@ public class Main {
 //            }
 //        });
 
-        ListenerSettings fall= new ListenerSettings();
+        Settings fall= new Settings();
         fall.temperature = 0f;
-        fall.direction = ListenerSettings.Direction.DOWN;
+        fall.direction = Settings.Direction.DOWN;
         fall.ignoreBand = 0f;
 
         tm.setTemperature(5f, CELSIUS);
 
-//        tm.listen(fall, new Callback() {
-//            @Override
-//            public void execute() {
-//                System.out.println("We are falling");
-//            }
-//        });
 
-        ListenerSettings freezing = new ListenerSettings();
+        Settings freezing = new Settings();
         freezing.temperature = 0f;
-        freezing.direction = ListenerSettings.Direction.ANY;
+        freezing.direction = Settings.Direction.ANY;
         freezing.ignoreBand = 0.5f;
 
         tm.listen(freezing, new Callback() {

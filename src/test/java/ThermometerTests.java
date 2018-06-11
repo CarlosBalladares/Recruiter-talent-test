@@ -1,10 +1,10 @@
-package main.java.thermometer;
+package test.java;
 
-import org.junit.Assert;
+import main.java.thermometer.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static main.java.thermometer.ListenerSettings.Direction;
+import static main.java.thermometer.Settings.Direction;
 
 /**
  * Created by carlosballadares on 2018-06-10.
@@ -23,8 +23,7 @@ public class ThermometerTests {
     public void testCase1(){
         flag= false;
 
-
-        ListenerSettings settings;
+        Settings settings;
 
         settings = SettingsFactory.get(50.0f, Direction.ANY, 0f);
 
@@ -54,7 +53,7 @@ public class ThermometerTests {
 
         flag= false;
 
-        ListenerSettings settings;
+        Settings settings;
         settings = SettingsFactory.get(0.0f, Direction.ANY, 0.5f);
 
 
@@ -96,7 +95,7 @@ public class ThermometerTests {
     public void testCase3(){
         flag = false;
 
-        ListenerSettings settings;
+        Settings settings;
         settings = SettingsFactory.get(5.0f, Direction.DOWN, 0.0f);
 
         TemperatureListener tl = tm.listen(settings, new Callback() {
@@ -126,6 +125,7 @@ public class ThermometerTests {
         tm.setTemperature(-1f, CELSIUS);
         assertFalse(flag);
 
+        tm.unlisten(tl);
 
     }
 
@@ -133,7 +133,7 @@ public class ThermometerTests {
     public void testCase4(){
         flag = false;
 
-        ListenerSettings settings;
+        Settings settings;
         settings = SettingsFactory.get(-1.0f, Direction.DOWN, 2.0f);
 
         TemperatureListener tl = tm.listen(settings, new Callback() {
@@ -170,6 +170,7 @@ public class ThermometerTests {
         tm.setTemperature(-1.5f, CELSIUS);
         assertFalse(flag);
 
+        tm.unlisten(tl);
 
     }
 
@@ -177,7 +178,7 @@ public class ThermometerTests {
     public void testCase5(){
         flag = false;
 
-        ListenerSettings settings;
+        Settings settings;
         settings = SettingsFactory.get(5.0f, Direction.UP, 0.0f);
 
         TemperatureListener tl = tm.listen(settings, new Callback() {
@@ -207,6 +208,7 @@ public class ThermometerTests {
         tm.setTemperature(5f, CELSIUS);
         assertFalse(flag);
 
+        tm.unlisten(tl);
 
     }
 
@@ -214,7 +216,7 @@ public class ThermometerTests {
     public void testCase6(){
         flag = false;
 
-        ListenerSettings settings;
+        Settings settings;
         settings = SettingsFactory.get(30.0f, Direction.UP, 0.2f);
 
         TemperatureListener tl = tm.listen(settings, new Callback() {
@@ -251,6 +253,56 @@ public class ThermometerTests {
         tm.setTemperature(30.5f, CELSIUS);
         assertFalse(flag);
 
+        tm.unlisten(tl);
+
+    }
+
+    @Test
+    public void testFarenheitToCelsius(){
+        tm.setTemperature(0f, CELSIUS);
+        Float farenheit = tm.getTemperature(FARENHEIT);
+        assertEquals(farenheit,(Float) 32.0F);
+        tm.setTemperature(32f, FARENHEIT);
+
+        Float celsius = tm.getTemperature(CELSIUS);
+        assertEquals(celsius,(Float) 0.0f);
+
+        assertEquals((Float) 10.0F, tm.toCelsius(50.0F));
+        assertEquals((Float) 50.0F, tm.toFarenheit(10.0F));
+
+        tm.setTemperature(10.0F, CELSIUS);
+        tm.reportTemperature(FARENHEIT);
+
+        tm.setTemperature(50.0F, FARENHEIT);
+        tm.reportTemperature(CELSIUS);
+
+    }
+
+    @Test
+    public void testReadData(){
+        //tm.ReadData("src/main/resources/data/LinearRise.csv");
+        //tm.ReadData("src/main/resources/data/LinearFall.csv");
+        Settings ls1 = SettingsFactory.get(0.5F, Direction.UP, 0.0F);
+
+        Settings ls2 = SettingsFactory.get(-0.5F, Direction.DOWN, 0.0F);
+
+        tm.listen(ls1, new Callback() {
+            @Override
+            public void execute() {
+                //fail("Sine doesn't exceed 1");
+                System.out.println("value above 0.5");
+            }
+        });
+
+        tm.listen(ls2, new Callback() {
+            @Override
+            public void execute() {
+                //fail("Sine is greater then  -1");
+                System.out.println("value below -0.5");
+
+            }
+        });
+        tm.ReadData("src/main/resources/data/sinesavalues2.csv");
 
     }
 

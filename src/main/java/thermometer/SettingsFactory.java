@@ -5,8 +5,8 @@ package main.java.thermometer;
  */
 public class SettingsFactory {
 
-    public static ListenerSettings get(Float temp, boolean celsius, ListenerSettings.Direction dir, Float ignoreRange){
-        ListenerSettings ls = new ListenerSettings();
+    public static Settings get(Float temp, boolean celsius, Settings.Direction dir, Float ignoreRange){
+        Settings ls = new Settings();
         if(!celsius){
             temp = Thermometer.toCelsius(temp);
         }
@@ -16,11 +16,8 @@ public class SettingsFactory {
         return  ls;
     }
 
-    public static ListenerSettings get(Float temp , ListenerSettings.Direction dir, Float ignoreRange){
-        ListenerSettings ls = new ListenerSettings();
-        ls.temperature = temp;
-        ls.direction = dir;
-        ls. ignoreBand = ignoreRange;
-        return  ls;
+    public static Settings get(Float temp , Settings.Direction dir, Float ignoreRange){
+
+        return  get(temp, true, dir, ignoreRange);
     }
 }
