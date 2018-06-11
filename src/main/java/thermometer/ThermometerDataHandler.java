@@ -2,6 +2,10 @@ package main.java.thermometer;
 
 /**
  * Created by carlosballadares on 2018-06-10.
+ *
+ * This class implements the data handling. When the temperature object receives a new data point.
+ * It implements the requirements specified in the temperature test pdf file.
+ *
  */
 public class ThermometerDataHandler extends TemperatureListener{
 

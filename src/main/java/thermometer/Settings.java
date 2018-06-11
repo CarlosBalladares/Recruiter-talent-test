@@ -2,6 +2,9 @@ package main.java.thermometer;
 
 /**
  * Created by carlosballadares on 2018-06-10.
+ *
+ * Definition of the settings object and some default settings
+ *
  */
 
 public class Settings {

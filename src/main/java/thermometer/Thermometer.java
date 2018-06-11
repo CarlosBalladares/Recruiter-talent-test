@@ -12,8 +12,6 @@ import java.util.HashMap;
 /**
  * Created by carlosballadares on 2018-06-08.
  */
-
-
 public class Thermometer{
 
 
@@ -34,12 +32,21 @@ public class Thermometer{
     private Float temperature;
 
 
+    /**
+     * Instantiates a new Thermometer.
+     */
     public Thermometer() {
         this.eb = new EventBus();
         this.temperature = 0f;
         this.definitions = new HashMap<>();
     }
 
+    /**
+     * Gets temperature.
+     *
+     * @param celsius indicates the desired format
+     * @return the temperature
+     */
     public Float getTemperature(boolean celsius) {
         if(!celsius){
             return (temperature*9/5)+32;
@@ -47,16 +54,34 @@ public class Thermometer{
         return temperature;
     }
 
+    /**
+     * Converts Farenheit to Celsius.
+     *
+     * @param far Temperature in farenheit
+     * @return Celsius  degrees as Float
+     */
     public static Float toCelsius(Float far){
         return (far-32)*5/9;
     }
 
+    /**
+     * Converts Celsius to Farenheit.
+     *
+     * @param cel Temperature in Celsius
+     * @return Temperature in Farenheit
+     */
     public static Float toFarenheit(Float cel){
         return (cel*9/5)+32;
     }
 
-    public void setTemperature(Float temperature, boolean celsius) {
-        if(!celsius){
+    /**
+     * Sets temperature and notifies all listeners
+     *
+     * @param temperature the new temperature
+     * @param isCelsius     indicates the new temperature's system
+     */
+    public void setTemperature(Float temperature, boolean isCelsius) {
+        if(!isCelsius){
             temperature  = (temperature-32)*5/9;
         }
 
@@ -66,6 +91,11 @@ public class Thermometer{
 
     }
 
+    /**
+     * Reports temperature to the commandline
+     *
+     * @param isCelsius the desired temperature system for the report
+     */
     public void reportTemperature(boolean isCelsius){
         Float temp;
         String type;
@@ -81,6 +111,15 @@ public class Thermometer{
     }
 
 
+    /**
+     * Registers a listener with the desired properties. See the class
+     * Settings. And when the specified conditions are met the callback's execute method
+     * is called. The SettingsFacotoryClass can provide an easier way to define settings.
+     *
+     * @param lp the preferences, which define temperature, Direction of change, ignore after trigger(within a range)
+     * @param cb A callback object with an execute method that will be called when the desired even occurs
+     * @return the temperature listener which is registered.
+     */
     public TemperatureListener listen(Settings lp, Callback cb){
 
         TemperatureListener tl =new ThermometerDataHandler(lp, cb);
@@ -90,10 +129,23 @@ public class Thermometer{
         return tl;
     }
 
+    /**
+     * Unlisten. Removes a temperature listener. No more notifications, will be
+     * sent once the corresponding listener is removed. Whoever calls this must
+     * keep track of the TemperatureListener object
+     *
+     * @param tl the Temerature listener object
+     */
     public void unlisten(TemperatureListener tl){
         eb.unregister(tl);
     }
 
+    /**
+     * Read data. Reads a csv file form a path. It is expected that the
+     * CSV file consists of one line and only temperature data.
+     *
+     * @param path the path
+     */
     public void ReadData(String path){
         System.out.println("reading : "+path);
 

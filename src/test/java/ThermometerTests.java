@@ -8,6 +8,8 @@ import static main.java.thermometer.Settings.Direction;
 
 /**
  * Created by carlosballadares on 2018-06-10.
+ * Tests for the Thermometer class
+ *
  */
 public class ThermometerTests {
 
