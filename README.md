@@ -10,11 +10,14 @@
 
 ```java
 Thermometer tm = new Thermometer();
+
 Settings settings = SettingsFactory.get("Freezing");
+
 tm.listen(settings, new Callback() {
             public void execute() {
                 //Do something when its freezing.
             }
 });
+
 tm.readData(somecsvfilepath);
 ```
