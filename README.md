@@ -21,6 +21,8 @@ tm.listen(settings, new Callback() {
             }
 });
 
+tm.readData(somecsvfilepath);
+
 
 
 '''
