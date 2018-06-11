@@ -93,6 +93,18 @@ public class Main {
         tm.setTemperature(1f, CELSIUS);
 
 
+        Settings settings = SettingsFactory.get("Freezing");
+
+        tm.listen(settings, new Callback() {
+            @Override
+            public void execute() {
+                //Do something when its freezing.
+            }
+        });
+
+
+
+
 
 
 
