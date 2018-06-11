@@ -8,7 +8,8 @@
 
 
 
-'''Thermometer tm = new Thermometer();
+'''java
+Thermometer tm = new Thermometer();
 
 
 Settings settings = SettingsFactory.get("Freezing");
