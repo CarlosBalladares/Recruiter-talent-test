@@ -8,8 +8,7 @@
 
 
 
-'''
-Thermometer tm = new Thermometer();
+'''Thermometer tm = new Thermometer();
 
 
 Settings settings = SettingsFactory.get("Freezing");
@@ -21,8 +20,4 @@ tm.listen(settings, new Callback() {
             }
 });
 
-tm.readData(somecsvfilepath);
-
-
-
-'''
+tm.readData(somecsvfilepath);'''
