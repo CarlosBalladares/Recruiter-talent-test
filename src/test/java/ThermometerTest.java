@@ -11,7 +11,7 @@ import static main.java.thermometer.Settings.Direction;
  * Tests for the Thermometer class
  *
  */
-public class ThermometerTests {
+public class ThermometerTest {
 
 
     public static boolean CELSIUS   = true;

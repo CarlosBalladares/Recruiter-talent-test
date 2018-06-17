@@ -4,9 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/CarlosBalladares/Thermometer_question/badge.svg?branch=master)](https://coveralls.io/github/CarlosBalladares/Thermometer_question?branch=master)
 
 
-##To use the Thermometer class
-
-
+# To use the Thermometer class
 
 '''
 Thermometer tm = new Thermometer();
@@ -26,3 +24,6 @@ tm.readData(somecsvfilepath);
 
 
 '''
+
+# Original question
+![Alt text](src/main/resources/thermometerq.png)
