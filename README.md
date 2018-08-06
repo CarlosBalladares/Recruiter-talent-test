@@ -1,7 +1,7 @@
 # Thermometer_question
 
-[![Build Status](https://travis-ci.org/CarlosBalladares/Thermometer-question.svg?branch=master)](https://travis-ci.org/CarlosBalladares/Thermometer-question)
-
+Check the test results in the Travis Build:
+[![Build Status](https://travis-ci.org/CarlosBalladares/Recruiter-talent-test.svg?branch=master)](https://travis-ci.org/CarlosBalladares/Recruiter-talent-test)
 # To use the Thermometer class
 
 ```java
