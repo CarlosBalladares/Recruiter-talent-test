@@ -22,3 +22,5 @@ tm.readData(somecsvfilepath);
 # Original question
 ![Alt text](src/main/resources/thermometerq.png)
 
+
+If you are still reading. Please forgive my excesive use of buzzwords.
